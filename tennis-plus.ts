@@ -1,25 +1,9 @@
-import { AbonnéMessages } from "./abonné-messages";
-import { Chef } from "./chef";
-import { Message } from "./message";
-
-export class TennisPlus implements AbonnéMessages {
-  notification(client: Chef, message: Message) {
-    if (message.sujet === "ABSENT") {
-      console.log(
-        `TennisPlus reçoit une notification de message: ${message.sujet},${
-          message.contenu
-        }`
-      );
-      let nouveauPlanning = this.refaitLePlanning();
-      let messagePlanning: Message = {
-        sujet: "PLANNING",
-        contenu: nouveauPlanning
-      };
-      client.reçoitMessage(messagePlanning);
-    }
+export let TennisPlus = {
+  planning: (): Promise<string> => {
+    return new Promise(function(resolve, reject) {
+      setTimeout(function() {
+        resolve(`Planning du ${new Date().toLocaleDateString()}`);
+      }, 5000);
+    });
   }
-
-  private refaitLePlanning() {
-    return `Planning du ${new Date().toLocaleDateString()}`;
-  }
-}
+};
