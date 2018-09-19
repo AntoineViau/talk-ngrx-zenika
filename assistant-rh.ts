@@ -1,10 +1,7 @@
 import { Documents } from "./documents";
 import { Message } from "./message";
 
-export let assistantRh = (
-  documents: Documents,
-  message: Message
-): Documents => {
+export function assistantRh(documents: Documents, message: Message): Documents {
   switch (message.sujet) {
     case "ABSENT":
       return {
@@ -14,4 +11,4 @@ export let assistantRh = (
     default:
       return documents;
   }
-};
+}

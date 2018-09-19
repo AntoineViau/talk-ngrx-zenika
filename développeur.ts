@@ -6,12 +6,12 @@ import { Message } from "./message";
 export class Développeur implements AbonnéDocuments {
   constructor(private name: string, private chef: Chef) {}
 
-  notification(documents: Documents) {
-    console.log(`${this.name} reçoit documents: ${JSON.stringify(documents)}`);
-  }
-
   absent() {
     let message: Message = { sujet: "ABSENT", contenu: this.name };
     this.chef.reçoitMessage(message);
+  }
+
+  notification(documents: Documents) {
+    console.log(`${this.name} reçoit documents: ${JSON.stringify(documents)}`);
   }
 }
